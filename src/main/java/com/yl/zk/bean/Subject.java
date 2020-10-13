@@ -1,8 +1,6 @@
 package com.yl.zk.bean;
 
 
-import com.sun.tools.javac.util.List;
-
 import java.io.Serializable;
 
 /**

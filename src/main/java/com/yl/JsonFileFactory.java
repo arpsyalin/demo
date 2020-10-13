@@ -1,16 +1,11 @@
-package com.yl.zk.data;
+package com.yl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.yl.zk.bean.Subject;
-import com.yl.zk.utils.FileUtils;
-import org.springframework.boot.jackson.JsonObjectDeserializer;
-import org.springframework.boot.jackson.JsonObjectSerializer;
+import com.yl.utils.FileUtils;
 import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-
-import static com.yl.zk.data.Constants.MKS;
 
 /**
  * * @Description 数据工厂
@@ -19,22 +14,22 @@ import static com.yl.zk.data.Constants.MKS;
  * * @Version 1.0
  * * @Remark TODO
  **/
-public class ZKDataFactory {
-    static ZKDataFactory instance = new ZKDataFactory();
+public class JsonFileFactory {
+    static JsonFileFactory instance = new JsonFileFactory();
 
-    private ZKDataFactory() {
+    private JsonFileFactory() {
 
     }
 
-    public static ZKDataFactory getInstance() {
+    public static JsonFileFactory getInstance() {
         return instance;
     }
 
-    public Subject loadSubject(String path) {
+    public <T> T loadSubject(String path, Class<T> clazz) {
         try {
             File jsonFile = ResourceUtils.getFile("classpath:" + path);
             String json = FileUtils.readFileToString(jsonFile);
-            return JSONObject.parseObject(json, Subject.class);
+            return JSONObject.parseObject(json, clazz);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

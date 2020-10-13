@@ -1,9 +1,6 @@
 package com.yl.zk.tools;
 
-import com.sun.tools.javac.util.List;
 import com.yl.zk.bean.*;
-
-import java.util.ArrayList;
 
 import static com.yl.zk.data.Constants.ALL;
 import static com.yl.zk.data.Constants.TITLE;

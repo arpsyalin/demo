@@ -1,7 +1,7 @@
 package com.yl.zk.data;
 
 /**
- * * @Description 常量
+ * * @Description 自考常量
  * * @Author 刘亚林
  * * @CreateDate 2020/10/9
  * * @Version 1.0

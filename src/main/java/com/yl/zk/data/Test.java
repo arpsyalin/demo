@@ -1,9 +1,8 @@
 package com.yl.zk.data;
 
 import com.alibaba.fastjson.JSONObject;
-import com.sun.tools.javac.util.List;
+import com.yl.JsonFileFactory;
 import com.yl.zk.bean.ArrKPointT;
-import com.yl.zk.bean.KPointT;
 import com.yl.zk.bean.Subject;
 import com.yl.zk.tools.SearchSubject;
 
@@ -16,7 +15,7 @@ import com.yl.zk.tools.SearchSubject;
  **/
 public class Test {
     public static void main(String[] args) {
-        Subject subject = ZKDataFactory.getInstance().loadSubject(Constants.MKS);
+        Subject subject = JsonFileFactory.getInstance().loadSubject(Constants.MKS, Subject.class);
         ArrKPointT result = SearchSubject.searchSubject(subject, Constants.ALL, "学习马克思主义的目的");
         System.out.println(JSONObject.toJSONString(result));
     }
