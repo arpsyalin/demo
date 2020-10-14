@@ -8,6 +8,7 @@ import com.yl.design.constant.Constants;
 import com.yl.design.create.*;
 import com.yl.design.structure.Adapter;
 import com.yl.design.structure.Bridge;
+import com.yl.design.structure.Decorator;
 import com.yl.design.structure.Proxy;
 
 /**
@@ -99,6 +100,18 @@ public class DesignTest {
 
         Log.d(new Bridge.LYLMediaPlay(mp4, unix).play());
         Log.d(new Bridge.LYLMediaPlay(avi, linux).play());
+
+        //装饰器模式
+        Log.d("");
+        Decorator.BYDCarFactory bydCarFactory = new Decorator.BYDCarFactory();
+        Decorator.BJ4S_1 bj4S_1 = new Decorator.BJ4S_1(bydCarFactory);
+        bj4S_1.buildCar();
+        Decorator.DZCarFactory dzCarFactory = new Decorator.DZCarFactory();
+        Decorator.BJ4S_1 bj4S_2 = new Decorator.BJ4S_1(dzCarFactory);
+        bj4S_2.buildCar();
+
+
+
     }
 
 
