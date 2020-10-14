@@ -64,6 +64,12 @@ public class DesignTest {
         Log.d("hwFactory   鼠标：" + hwFactory.getMouse().mouseBrandName() + "；键盘：" + hwFactory.getKeyBroad().keyBroadBrandName());
 
         Log.d("");
+        //建造者模式
+        Log.d("菩提树报价：" + new Builder.HouseDecorationManager(new Builder.PTSWholeOffer()).build().toString());
+        Log.d("名匠报价：" + new Builder.HouseDecorationManager(new Builder.MJWholeOffer()).build().toString());
+        //建造者模式 链式调用
+        Builder.Request request = new Builder.Request.RequestBuilder().get().url("http://www.baidu.com/").build();
+        Log.d(request.toString());
 
     }
 
