@@ -7,6 +7,7 @@ import com.yl.design.bean.Principle;
 import com.yl.design.constant.Constants;
 import com.yl.design.create.*;
 import com.yl.design.structure.Adapter;
+import com.yl.design.structure.Bridge;
 import com.yl.design.structure.Proxy;
 
 /**
@@ -88,6 +89,16 @@ public class DesignTest {
         new Adapter.PowerAdapter(voltage10).charge();
         Adapter.Voltage15 voltage15 = new Adapter.Voltage15();
         new Adapter.PowerAdapter(voltage15).charge();
+
+        Log.d("");
+        //桥接模式
+        Bridge.AVI avi = new Bridge.AVI();
+        Bridge.MP4 mp4 = new Bridge.MP4();
+        Bridge.Linux linux = new Bridge.Linux();
+        Bridge.Unix unix = new Bridge.Unix();
+
+        Log.d(new Bridge.LYLMediaPlay(mp4, unix).play());
+        Log.d(new Bridge.LYLMediaPlay(avi, linux).play());
     }
 
 
