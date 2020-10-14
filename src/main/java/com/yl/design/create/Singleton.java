@@ -9,7 +9,7 @@ import com.yl.Log;
  * * @Version 1.0
  * * @Remark 单例（Singleton）模式：某个类只能生成一个实例，该类提供了一个全局访问点供外部获取该实例，其拓展是有限多例模式。（属于对象创建型模式）
  **/
-public class Singleton {
+public class Singleton<I> {
     /**
      * * @Description 懒汉单例
      * * @Author 刘亚林

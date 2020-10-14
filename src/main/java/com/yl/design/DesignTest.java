@@ -6,6 +6,8 @@ import com.yl.design.bean.Design;
 import com.yl.design.bean.Principle;
 import com.yl.design.constant.Constants;
 import com.yl.design.create.*;
+import com.yl.design.structure.Adapter;
+import com.yl.design.structure.Proxy;
 
 /**
  * * @Description 设计模式测试
@@ -71,6 +73,21 @@ public class DesignTest {
         Builder.Request request = new Builder.Request.RequestBuilder().get().url("http://www.baidu.com/").build();
         Log.d(request.toString());
 
+
+        Log.d("");
+        //AMS代理模式尝试
+        Log.d(new AMS.ActivityManager().getService());
+        Log.d(new AMS.ActivityManager().getRunningService());
+        //代理模式
+        Log.d(new Proxy.ServerProxy().requestAddress());
+
+
+        Log.d("");
+        //适配器模式
+        Adapter.Voltage10 voltage10 = new Adapter.Voltage10();
+        new Adapter.PowerAdapter(voltage10).charge();
+        Adapter.Voltage15 voltage15 = new Adapter.Voltage15();
+        new Adapter.PowerAdapter(voltage15).charge();
     }
 
 
