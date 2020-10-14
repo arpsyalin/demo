@@ -8,82 +8,71 @@ package com.yl.design.create;
  * * @Remark 提供一个创建产品族的接口，其每个子类可以生产一系列相关的产品。（属于对象创建型模式）
  **/
 public class AbstractFactory {
-    public final static class DeviceType {
-        public final static int N90 = 1;
-        public final static int D200 = 2;
+    public interface IFactory {
+        IMouse getMouse();
+
+        IKeyBroad getKeyBroad();
     }
 
-    /**
-     * * @Description 设备工厂
-     * * @Author 刘亚林
-     * * @CreateDate 2020/10/13
-     * * @Version 1.0
-     * * @Remark
-     **/
-    public static abstract class AbstractDeviceFactory {
-        public abstract IDevice getDevice(int deviceType);
+    public interface IMouse {
+        String mouseBrandName();
     }
 
-    /**
-     * * @Description 设备
-     * * @Author 刘亚林
-     * * @CreateDate 2020/10/13
-     * * @Version 1.0
-     * * @Remark
-     **/
-    public interface IDevice {
-        String shockAction();
+    public interface IKeyBroad {
+        String keyBroadBrandName();
     }
 
-    public static class N90 implements IDevice {
-
+    public static class HPMouse implements IMouse {
         @Override
-        public String shockAction() {
-            return "Intent.SHOCK.N90";
+        public String mouseBrandName() {
+            return "惠普的鼠标";
         }
     }
 
-    public static class D200 implements IDevice {
+    public static class HPKeyBroad implements IKeyBroad {
         @Override
-        public String shockAction() {
-            return "Intent.SHOCK.D200";
+        public String keyBroadBrandName() {
+            return "惠普的键盘";
         }
     }
 
-    public static class D200_1 implements IDevice {
+    public static class LXMouse implements IMouse {
         @Override
-        public String shockAction() {
-            return "Intent.SHOCK.D200_2";
+        public String mouseBrandName() {
+            return "联想的鼠标";
         }
     }
 
-    public static class DeviceFactory extends AbstractDeviceFactory {
-
+    public static class LXKeyBroad implements IKeyBroad {
         @Override
-        public IDevice getDevice(int deviceType) {
-            switch (deviceType) {
-                case DeviceType.D200:
-                    return new D200();
-                case DeviceType.N90:
-                    return new N90();
-            }
-            return null;
+        public String keyBroadBrandName() {
+            return "联想的键盘";
         }
     }
 
-    public static class DeviceFactory_1 extends AbstractDeviceFactory {
+    public static class XMFactory implements IFactory {
 
         @Override
-        public IDevice getDevice(int deviceType) {
-            switch (deviceType) {
-                case DeviceType.D200:
-                    return new D200_1();
-                case DeviceType.N90:
-                    return new N90();
-            }
-            return null;
+        public IMouse getMouse() {
+            return new HPMouse();
+        }
+
+        @Override
+        public IKeyBroad getKeyBroad() {
+            return new LXKeyBroad();
         }
     }
 
+    public static class HWFactory implements IFactory {
 
+        @Override
+        public IMouse getMouse() {
+            return new LXMouse();
+        }
+
+        @Override
+        public IKeyBroad getKeyBroad() {
+            return new LXKeyBroad();
+        }
+    }
 }
