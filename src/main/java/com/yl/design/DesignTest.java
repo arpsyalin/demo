@@ -5,6 +5,7 @@ import com.yl.Log;
 import com.yl.design.bean.Design;
 import com.yl.design.bean.Principle;
 import com.yl.design.constant.Constants;
+import com.yl.design.create.AbstractFactory;
 import com.yl.design.create.Prototype;
 import com.yl.design.create.SimpleFactory;
 import com.yl.design.create.Singleton;
@@ -52,8 +53,9 @@ public class DesignTest {
         Log.d(SimpleFactory.grabAnimal(SimpleFactory.Const.ANIMAL_A).name());
         Log.d(SimpleFactory.grabAnimal(SimpleFactory.Const.ANIMAL_B).name());
 
-        //工厂方法模式
-            
+        //抽象工厂模式
+        Log.d(new AbstractFactory.DeviceFactory().getDevice(AbstractFactory.DeviceType.D200).shockAction());
+        Log.d(new AbstractFactory.DeviceFactory_1().getDevice(AbstractFactory.DeviceType.D200).shockAction());
     }
 
 
