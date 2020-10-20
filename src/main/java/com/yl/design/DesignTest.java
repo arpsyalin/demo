@@ -40,12 +40,21 @@ public class DesignTest {
 
         //原型模式
         try {
+            //浅拷贝
             Prototype.ImageFile imageFile = new Prototype.ImageFile("d:", "1111122222");
             Prototype.ImageFile imageFile1 = (Prototype.ImageFile) imageFile.clone();
             imageFile1.setPath("c:");
             Log.d("是否同一个对象：" + (imageFile == imageFile1));
             Log.d(imageFile.toString());
             Log.d(imageFile1.toString());
+
+            //深拷贝示例
+            int[] data = {1, 2, 3};
+            Prototype.User user = new Prototype.User("ddddd", data);
+            Prototype.User user1 = (Prototype.User) user.clone();
+            Log.d("是否同一个对象：" + (user == user1));
+            Log.d(user.toString());
+            Log.d(user1.toString());
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
