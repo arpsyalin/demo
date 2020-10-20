@@ -4,6 +4,7 @@ import com.yl.JsonFileFactory;
 import com.yl.Log;
 import com.yl.design.bean.Design;
 import com.yl.design.bean.Principle;
+import com.yl.design.behavior.Template;
 import com.yl.design.constant.Constants;
 import com.yl.design.create.*;
 import com.yl.design.structure.*;
@@ -144,6 +145,14 @@ public class DesignTest {
         computer.addParts(card, cpu).addParts(rom);
         computer.show();
         computer.calc();
+
+        //行为模式
+        //模版模式
+        Log.d("");
+        Template.BydAssembleCar bydAssembleCar = new Template.BydAssembleCar();
+        bydAssembleCar.assembleCar();
+        Template.HAssembleCar hAssembleCar = new Template.HAssembleCar();
+        hAssembleCar.assembleCar();
     }
 
 }
