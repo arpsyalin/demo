@@ -21,6 +21,7 @@ public class Template {
             addMirrors();
             addVehicle();
             Log.d("结束组装汽车---------------");
+            Log.d("");
         }
 
         void buildEngine() {
@@ -68,7 +69,6 @@ public class Template {
 
         @Override
         void addVehicle() {
-
             Log.d("安装超级大牌车机");
         }
     }

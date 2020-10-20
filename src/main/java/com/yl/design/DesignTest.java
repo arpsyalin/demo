@@ -4,6 +4,7 @@ import com.yl.JsonFileFactory;
 import com.yl.Log;
 import com.yl.design.bean.Design;
 import com.yl.design.bean.Principle;
+import com.yl.design.behavior.Strategy;
 import com.yl.design.behavior.Template;
 import com.yl.design.constant.Constants;
 import com.yl.design.create.*;
@@ -153,6 +154,21 @@ public class DesignTest {
         bydAssembleCar.assembleCar();
         Template.HAssembleCar hAssembleCar = new Template.HAssembleCar();
         hAssembleCar.assembleCar();
+
+        //策略模式
+        Log.d("");
+        Strategy.AirMode airMode = new Strategy.AirMode();
+        Strategy.CarMode carMode = new Strategy.CarMode();
+        Strategy.TrainMode trainMode = new Strategy.TrainMode();
+        Strategy.GoTravel goTravel = new Strategy.GoTravel();
+        goTravel.setITransportation(airMode);
+        goTravel.goTravel();
+        goTravel.setITransportation(carMode);
+        goTravel.goTravel();
+        goTravel.setITransportation(trainMode);
+        goTravel.goTravel();
+
+        //
     }
 
 }
