@@ -124,16 +124,26 @@ public class DesignTest {
         Flyweight.SportMeeting sportMeeting = new Flyweight.SportMeeting();
         Flyweight.ISport sport200 = sportMeeting.getSport("200米跑步");
         Flyweight.ISport sport400 = sportMeeting.getSport("400米跑步");
+        Flyweight.ISport sport2001 = sportMeeting.getSport("200米跑步");
+        Flyweight.ISport sport4001 = sportMeeting.getSport("400米跑步");
         Flyweight.ISport sportJump = sportMeeting.getSport("跳高");
-
+        Flyweight.ISport sportJump2 = sportMeeting.getSport("跳高");
+        sport2001.match(zs, ls, ww);
+        sport4001.match(zs, ww);
         sport200.match(zs, ls);
-        sport400.match(zs, ww);
+        sport400.match(zs, ls, ww);
         sportJump.match(zs, ls, ww);
+        sportJump2.match(zs, ww);
 
+        //组合模式
         Log.d("");
-
-
+        Composite.ComputerParts cpu = new Composite.ComputerParts("cpu", 1, 1200);
+        Composite.ComputerParts rom = new Composite.ComputerParts("内存条", 2, 290);
+        Composite.ComputerParts card = new Composite.ComputerParts("卡", 2, 290);
+        Composite.Computer computer = new Composite.Computer();
+        computer.addParts(card, cpu).addParts(rom);
+        computer.show();
+        computer.calc();
     }
-
 
 }

@@ -3,6 +3,7 @@ package com.yl.design.structure;
 import com.yl.Log;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * * @Description 享元模式
@@ -12,6 +13,7 @@ import java.util.HashMap;
  * * @Remark TODO 运用共享技术来有效地支持大量细粒度对象的复用。
  **/
 public class Flyweight {
+    //参加比赛的选手
     public static class Person {
         private String mName;
 
@@ -28,11 +30,12 @@ public class Flyweight {
         }
     }
 
+    //运动类接口需要实现哪些人比赛
     public interface ISport {
         void match(Person... person);
     }
 
-
+    //运动类
     public static class Sport implements ISport {
         String mKey;
 
@@ -40,26 +43,32 @@ public class Flyweight {
             this.mKey = key;
         }
 
+        //打印比赛人的实现
         @Override
         public void match(Person... persons) {
+            String personListStr = "";
             for (Person person : persons) {
-                Log.d("参加" + mKey + "比赛的是：" + person.getName());
+                personListStr += " " + person.getName() + " ";
             }
+            Log.d("参加本场：" + mKey + "；比赛的是：" + personListStr);
         }
     }
 
 
     //运动会
     public static class SportMeeting {
-        private HashMap<String, ISport> mSportHashMap = new HashMap<String, ISport>();
+        //运动项目
+        private Map<String, ISport> mSportHashMap = new HashMap();
 
+        //获取运动项目
         public ISport getSport(String key) {
             ISport sport = mSportHashMap.get(key);
             if (sport != null) {
-                System.out.println("具体享元" + key + "已经存在，被成功获取！");
+                Log.d("具体享元运动项目类：" + key + "已经存在，被成功获取！");
             } else {
                 sport = new Flyweight.Sport(key);
                 mSportHashMap.put(key, sport);
+                Log.d("具体享元运动项目类：" + key + "不存在，被创建！");
             }
             return sport;
         }
