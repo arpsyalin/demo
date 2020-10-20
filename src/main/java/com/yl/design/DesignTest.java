@@ -6,10 +6,7 @@ import com.yl.design.bean.Design;
 import com.yl.design.bean.Principle;
 import com.yl.design.constant.Constants;
 import com.yl.design.create.*;
-import com.yl.design.structure.Adapter;
-import com.yl.design.structure.Bridge;
-import com.yl.design.structure.Decorator;
-import com.yl.design.structure.Proxy;
+import com.yl.design.structure.*;
 
 /**
  * * @Description 设计模式测试
@@ -110,6 +107,30 @@ public class DesignTest {
         Decorator.BJ4S_1 bj4S_2 = new Decorator.BJ4S_1(dzCarFactory);
         bj4S_2.buildCar();
 
+        //外观模式
+        Log.d("");
+        Facade.ICar car = new Facade.HCar();
+        Facade.IWheel wheel = new Facade.PLLWheel();
+        Facade.IMirror mirror = new Facade.RearViewMirror();
+        Facade.CarFactory carFactory = new Facade.CarFactory(car, wheel, mirror);
+        carFactory.assemble();
+
+        //享元模式
+        Log.d("");
+        Flyweight.Person zs = new Flyweight.Person("张三");
+        Flyweight.Person ls = new Flyweight.Person("李四");
+        Flyweight.Person ww = new Flyweight.Person("王武");
+
+        Flyweight.SportMeeting sportMeeting = new Flyweight.SportMeeting();
+        Flyweight.ISport sport200 = sportMeeting.getSport("200米跑步");
+        Flyweight.ISport sport400 = sportMeeting.getSport("400米跑步");
+        Flyweight.ISport sportJump = sportMeeting.getSport("跳高");
+
+        sport200.match(zs, ls);
+        sport400.match(zs, ww);
+        sportJump.match(zs, ls, ww);
+
+        Log.d("");
 
 
     }
