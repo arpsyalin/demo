@@ -1,8 +1,5 @@
 package com.yl.design.structure;
 
-
-import java.util.HashMap;
-
 /**
  * * @Description 代理模式
  * * @Author 刘亚林
