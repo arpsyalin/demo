@@ -15,9 +15,10 @@ public class Atomicity {
         for (int i = 0; i < 20; i++) {
             threads[i] = new Thread(() -> {
                 for (int j = 0; j < 10000; j++) {
-                    synchronized (Atomicity.class) {
+                    //保证原子性
+//                    synchronized (Atomicity.class) {
                         count++;
-                    }
+//                    }
                 }
             });
             threads[i].start();

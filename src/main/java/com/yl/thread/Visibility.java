@@ -10,7 +10,8 @@ import com.yl.Log;
  * * @Remark TODO
  **/
 public class Visibility {
-    public static boolean isTrue = false;
+    //保证可见性代码段synchronized或者变量 加volatile
+    public static  boolean isTrue = false;
     public static  void main(String[] args) {
         new Thread(() -> {
             Log.d("thread start");
